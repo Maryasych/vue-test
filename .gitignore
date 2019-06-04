@@ -19,3 +19,5 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+/src/assets/test_homepage.psd
+/src/assets/test_homepage.jpg
