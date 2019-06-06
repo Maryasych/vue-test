@@ -5,6 +5,14 @@ import Home from './views/Home.vue';
 Vue.use(Router);
 
 export default new Router({
+  mode: 'history',
+  scrollBehavior (to, from, savedPosition) {
+    if (to.hash) {
+      return {
+        selector: to.hash
+      };
+    }
+  },
   routes: [
     {
       path: '/',
@@ -14,10 +22,12 @@ export default new Router({
     {
       path: '/about',
       name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
+      component: () => import('./views/About.vue'),
+    },
+    {
+      path: '/comments',
+      name: 'comments',
+      component: () => import('./views/Comments.vue'),
     },
   ],
 });

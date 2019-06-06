@@ -1,31 +1,52 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <nav class="navbar navbar-expand-lg static-top mt-4">
+      <div class="container-fluid">
+        <router-link to="/"><img src="./assets/logo.png" alt=""></router-link>
+        <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse"
+          data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto pr-4">
+            <li class="nav-item active">
+              <router-link to="/about" class="nav-link text-uppercase text-dark">about us
+              </router-link>
+            </li>
+            <li class="nav-item">
+              <router-link to="/#comment" class="nav-link text-uppercase text-dark">write comment
+              </router-link>
+            </li>
+            <li class="nav-item">
+              <router-link to="/comments" class="nav-link text-uppercase text-dark">comments
+              </router-link>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <router-view />
   </div>
 </template>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
+  @import url('~bootstrap/dist/css/bootstrap.min.css');
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+  @font-face {
+    font-family: 'SofiaProMedium';
+    src: url('./assets/fonts/SofiaProMedium.ttf') format('truetype')
+  }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+  .navbar-brand {
+    margin-left: 1.4em;
+  }
+
+  .navbar-nav {
+    font-family: 'SofiaProMedium';
+    font-size: 14px;
+    padding-right: .7em;
+    letter-spacing: .2em;
+  }
+
 </style>
