@@ -1,22 +1,20 @@
 <template>
   <div>
-    <div class="container">
-      <h1 class="info pt-5 pl-5 pb-5">{{ info }}</h1>
+    <div class="container pb-3">
+      <h1 class="info pt-5 pl-5">{{ info }}</h1>
     </div>
 
-    <div class="container-fluid pb-5 pt-3">
-      <div class="position-relative" style="height: 480px; z-index: -1">
-        <div class="position-absolute main-img" alt=""></div>
-      </div>
+    <div class="img-wrap mt-5 mb-5">
+      <div class="main-img w-100 h-100"></div>
     </div>
 
-    <div class="container pt5 pb-5">
+    <div class="container pt-5 pb-5">
       <div class="row">
         <div v-for="(item, i) in infoblock" :key="i" class="col-md">
           <img :src="item.img" />
           <h2>{{ item.title }}</h2>
-          <ul v-for="(listItem, index) in item.list" :key="index">
-            <li>
+          <ul v-for="(listItem, index) in item.list" :key="index" class="infoblock">
+            <li class="infoblock-item">
               {{ listItem }}
             </li>
 
@@ -25,76 +23,64 @@
       </div>
 
     </div>
+
     <div class="container-fluid comment mt-5">
       <div class="row pt-5">
-        <div class="col-md-3 offset-md-2">
-          <span class="text-white font-weight-bold display-4">Write comment</span>
+        <div class="col-md-3 offset-md-1 pt-5 mt-5">
+          <span class="text-white comment-text font-weight-bold display-4">Write comment</span>
           <div class="line mb-5"></div>
         </div>
-          <CommentForm></CommentForm>
+        <CommentForm></CommentForm>
       </div>
     </div>
-    <footer>
-      <div class="container-fluid m-auto">
-        <div class="row justify-content-between">
-          <div class="col-2 m-5">
-            <a href="mailto:mail@mail.co" class="text-white">mailto:mail@mail.co</a>
-            <br>
-            <a href="tel:+02020928172" class="text-white">+02020928172</a></div>
-          <div class="col-2 text-muted m-5">Copyright 2019</div>
-        </div>
-      </div>
-    </footer>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
-import CommentForm from '../components/CommentForm';
+  import CommentForm from '../components/CommentForm';
+  import Footer from '../components/Footer';
 
-export default {
-  components: {
-    CommentForm,
-  },
-  data() {
-    return {
-      info: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam soluta reiciendis.',
-      infoblock: [{
-        img: require('../assets/who-we-are.png'),
-        title: 'Who we are?',
-        list: [
-          'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate eligendi isteid.',
-          `Corrupti pariatur necessitatibus voluptatibus voluptatem distinctio ea vero nulla
-            exercitationem, laborum dolor dicta. Culpa quam cum doloremque excepturi.`,
-          `Corrupti pariatur necessitatibus voluptatibus voluptatem distinctio ea vero nulla
-            exercitationem, laborum dolor dicta. Culpa quam cum doloremque excepturi.`,
+  export default {
+    components: {
+      CommentForm,
+      Footer
+    },
+    data() {
+      return {
+        info: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam soluta reicie.',
+        infoblock: [{
+            img: require('../assets/who-we-are.png'),
+            title: 'Who we are?',
+            list: [
+              'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate eligendi isteid.',
+              `Corrupti pariatur necessitatibus voluptatibus`, ` voluptatem distinctio ea vero nulla
+            exercitationem, laborum dolor dicta.`, `Culpa quam cum doloremque excepturi.`,
+            ],
+          },
+          {
+            img: require('../assets/what-we-do.png'),
+            title: 'What we do?',
+            list: [
+              'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate eligendi isteid.',
+              `Corrupti pariatur necessitatibus voluptatibus`, ` voluptatem distinctio ea vero nulla
+            exercitationem, laborum dolor dicta.`, `Culpa quam cum doloremque excepturi.`,
+            ],
+          },
+          {
+            img: require('../assets/technology.png'),
+            title: 'Technology',
+            list: [
+              'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate eligendi isteid.',
+              `Corrupti pariatur necessitatibus voluptatibus`, ` voluptatem distinctio ea vero nulla
+            exercitationem, laborum dolor dicta.`, `Culpa quam cum doloremque excepturi.`,
+            ],
+          },
         ],
-      },
-      {
-        img: require('../assets/what-we-do.png'),
-        title: 'What we do?',
-        list: [
-          'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate eligendi isteid.',
-          `Corrupti pariatur necessitatibus voluptatibus voluptatem distinctio ea vero nulla
-            exercitationem, laborum dolor dicta. Culpa quam cum doloremque excepturi.`,
-          `Corrupti pariatur necessitatibus voluptatibus voluptatem distinctio ea vero nulla
-            exercitationem, laborum dolor dicta. Culpa quam cum doloremque excepturi.`,
-        ],
-      },
-      {
-        img: require('../assets/technology.png'),
-        title: 'Technology',
-        list: [
-          'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate eligendi isteid.',
-          `Corrupti pariatur necessitatibus voluptatibus voluptatem distinctio ea vero nulla
-            exercitationem, laborum dolor dicta. Culpa quam cum doloremque excepturi.`,
-          `Corrupti pariatur necessitatibus voluptatibus voluptatem distinctio ea vero nulla
-            exercitationem, laborum dolor dicta. Culpa quam cum doloremque excepturi.`,
-        ],
-      },
-      ],
-    };
-  },
-};
+      };
+    },
+  };
+
 </script>
 
 
@@ -103,20 +89,44 @@ export default {
     font-family: 'SofiaProSemiBold';
     src: url('../assets/fonts/SofiaProSemiBold.ttf') format('truetype')
   }
+
+  @font-face {
+    font-family: 'SofiaProRegular';
+    src: url('../assets/fonts/SofiaProRegular.ttf') format('truetype')
+  }
+
   .info {
     font-family: 'SofiaProSemiBold';
-    font-size: 8vw;
+    font-size: 5em;
     font-weight: 300;
-    line-height: 1.1em;
+    line-height: .9em;
+  }
+
+  .infoblock {
+    font-family: 'SofiaProSemiBold';
+    font-size: 2.5em;
+    font-weight: 700;
+  }
+
+  .infoblock-item {
+    font-family: 'SofiaProRegular';
+    font-size: .4em;
+    font-weight: normal;
+  }
+
+  .img-wrap {
+    height: 35vw;
+    max-height: 911px;
+    position: relative;
+    overflow: hidden;
   }
 
   .main-img {
+    position: absolute;
     background-image: url('../assets/main-img.jpg');
-    background-position: 0 -295px;
+    background-position: center;
     background-repeat: no-repeat;
     background-size: auto;
-    height: 100%;
-    width: 100%;
   }
 
   .line {
@@ -125,18 +135,12 @@ export default {
   }
 
   .comment,
-  footer {
+  .dark-footer {
     background-color: #090a19
   }
 
-  ::placeholder,
-  input[type=text],
-  textarea {
-    color: green
-  }
-
-  input[type=submit] {
-    padding: 15px 35px;
+  .comment-text {
+    font-family: "SofiaProSemiBold"
   }
 
 </style>

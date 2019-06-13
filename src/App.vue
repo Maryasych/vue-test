@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-expand-lg static-top mt-4">
+    <nav class="navbar navbar-expand-lg static-top mt-5">
       <div class="container-fluid">
         <router-link to="/"><img src="./assets/logo.png" alt=""></router-link>
         <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse"
@@ -11,15 +11,14 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto pr-4">
             <li class="nav-item active">
-              <router-link to="/about" class="nav-link text-uppercase text-dark">about us
+              <router-link tag="a" to="/about" class="nav-link text-uppercase text-dark">about us
               </router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/#comment" class="nav-link text-uppercase text-dark">write comment
-              </router-link>
+             <a @click="scrollToCommentForm" id="write-comment"> <router-link to="/" class="nav-link text-uppercase text-dark"> write comment</router-link></a>
             </li>
             <li class="nav-item">
-              <router-link to="/comments" class="nav-link text-uppercase text-dark">comments
+              <router-link tag="a" to="/comments" class="nav-link text-uppercase text-dark">comments
               </router-link>
             </li>
           </ul>
@@ -29,6 +28,20 @@
     <router-view />
   </div>
 </template>
+
+<script>
+import $ from 'jquery'
+export default {
+  methods:{
+    scrollToCommentForm(){
+      if(this.$router.history.current.name == "home")
+	    $('html,body').animate({
+	        scrollTop: $('.comment').eq(0).offset().top
+	    }, 600);
+  }
+},
+}
+</script>
 
 <style>
   @import url('~bootstrap/dist/css/bootstrap.min.css');

@@ -6,15 +6,7 @@ Vue.use(Router);
 
 export default new Router({
   mode: 'history',
-  scrollBehavior (to, from, savedPosition) {
-    if (to.hash) {
-      return {
-        selector: to.hash
-      };
-    }
-  },
-  routes: [
-    {
+  routes: [{
       path: '/',
       name: 'home',
       component: Home,
@@ -28,6 +20,11 @@ export default new Router({
       path: '/comments',
       name: 'comments',
       component: () => import('./views/Comments.vue'),
+    },
+    {
+      path: '/comment/:id',
+      name: 'comment',
+      component: () => import('./views/Comment.vue'),
     },
   ],
 });
